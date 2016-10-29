@@ -1,5 +1,6 @@
 import path from 'path';
 import webpack from 'webpack';
+import BabiliPlugin from 'babili-webpack-plugin';
 import baseConfig from './base.babel';
 
 export default {
@@ -19,6 +20,9 @@ export default {
     ),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
+    }),
+    new BabiliPlugin({
+      comments: false,
     }),
   ],
   target: 'electron-main',
